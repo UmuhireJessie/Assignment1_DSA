@@ -1,12 +1,12 @@
 from abc import ABCMeta, abstractmethod
 
 
-class SetOperation(object):
+class ListOperation(object):
     __metaclass__ = ABCMeta
 
-    def __init__(self, L, element):
-        self.L = L
-        self.element = element
+    def __init__(self, list_, item):
+        self.list_ = list_
+        self.item = item
 
     @abstractmethod
     def __call__(self):
@@ -17,35 +17,34 @@ class SetOperation(object):
         return
 
 
-class Insert(SetOperation):
+class Insert(ListOperation):
     def __call__(self):
-        self.L.append(self.element)
-        self.L.sort()
+        self.list_.append(self.item)
+        self.list_.sort()
 
     def undo(self):
-        self.L.remove(self.element)
-        self.L.sort()
+        self.list_.remove(self.item)
+        self.list_.sort()
 
 
-class Delete(SetOperation):
+class Delete(ListOperation):
     def __call__(self):
         self.deleted = False
-        if self.element in self.L:
-            self.L.remove(self.element)
-            self.L.sort()
+        if self.item in self.list_:
+            self.list_.remove(self.item)
+            self.list_.sort()
             self.deleted = True
 
     def undo(self):
         if self.deleted:
-            self.L.append(self.element)
-            self.L.sort()
+            self.list_.append(self.item)
+            self.list_.sort()
 
 
 class UndoableList(object):
     def __init__(self):
         self.undo_commands = []
         self.redo_commands = []
-
 
     def push_undo_command(self, command):
         """Push the given command to the undo command stack."""
