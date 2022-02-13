@@ -15,8 +15,7 @@ def largestNumber(n, k):
     if k <= len(DistinctList):
         # We show the list
         print(f"\nThe distinct list: {DistinctList}")
-        # and sort in descending order do that we can perform operations easily on the largest largest element
-        # (first elements)
+        # and sort in descending order do that we can perform operations easily on the largest element (first elements)
         newList = sorted(DistinctList, reverse=True)
         return f"The sum of {k} largest numbers is: {sum(newList[:k])}"
 
