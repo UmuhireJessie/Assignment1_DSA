@@ -74,7 +74,6 @@ class UndoableList(object):
             last_redo_command = self.redo_commands.pop()
         except IndexError:
             return "Nothing to redo"
-            # raise EmptyCommandStackError()
 
         return last_redo_command
 
