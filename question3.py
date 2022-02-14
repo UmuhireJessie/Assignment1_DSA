@@ -9,6 +9,7 @@ def knapsack(list_of_values, list_of_weights, bag_capacity, number_of_pellets):
     the range of weights or the capacity a bag can be able to carry as the columns"""
 
     k = [[0 for _ in range(bag_capacity + 1)] for _ in range(number_of_pellets + 1)]
+    # A List that will store pellets that contributes to the highest value
     # pellets_to_include = []
 
     """I created nested for loop to iterate through the ranges of the pellets (rows) and the bag capacity (columns) and 
@@ -31,6 +32,7 @@ def knapsack(list_of_values, list_of_weights, bag_capacity, number_of_pellets):
                 that capacity of the bag one on top on it, one at the same """
                 k[i][w] = k[i-1][w]
 
+    # Finding which pellets that contributed to the highest value and append the value and its weight
     # while number_of_pellets > 0 and bag_capacity > 0:
     #     if k[number_of_pellets][bag_capacity] == k[number_of_pellets - 1][bag_capacity]:
     #         continue
