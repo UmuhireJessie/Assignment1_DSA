@@ -39,14 +39,13 @@ def countingDict(list_):
 list1 = [1, 3, 2, 2, 5, 5, 2]
 list2 = [1, 3, 2, 2, 5, 2]
 
-# Implementing the big O notation
+# Analysing time complexity and stating the big O notation
 L = []
-list3 = range(1,1000)
-for item in list2:
+for item in range(len(list2)):
     lst = [1] * item
-    runtime = timeit.timeit()
+    run_time = timeit.timeit()
     countingDict(lst)
-    L.append(runtime)
+    L.append(run_time)
 
 plt.plot(list2, L, 'o-', label='change of time with length')
 plt.xlabel('lengths of list')
@@ -54,6 +53,6 @@ plt.ylabel('Average time (ms)')
 plt.show()
 
 # PROMPT answers
-print(countingDict(list1))
+print(countingDict(list2))
 print("\nThe Big O notation of the algorithm is O(n) ")
 

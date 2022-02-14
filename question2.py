@@ -7,7 +7,7 @@ the algorithm should return 25= (12+7+6).
 Implement the algorithm in python [5] """
 
 
-# Defining the function to the couunting of the elements in the list
+# Defining the function to the counting of the elements in the list
 def largestNumber(n, k):
     # Creating a variable to store the list after removing duplicates by using the set
     DistinctList = list(set(n))
@@ -20,5 +20,5 @@ def largestNumber(n, k):
         return f"The sum of {k} largest numbers is: {sum(newList[:k])}"
 
 
-print(largestNumber([10, 6, 7, 10, 10, 1, 8, 1,], 3))
+print(largestNumber([10, 6, 7, 10, 10, 1, 8, 1], 3))
 
