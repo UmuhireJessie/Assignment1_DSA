@@ -33,14 +33,12 @@ def knapsack(list_of_values, list_of_weights, bag_capacity, number_of_pellets):
                 k[i][w] = k[i-1][w]
 
     # Finding which pellets that contributed to the highest value and append the value and its weight
-    # while number_of_pellets > 0 and bag_capacity > 0:
-    #     if k[number_of_pellets][bag_capacity] == k[number_of_pellets - 1][bag_capacity]:
-    #         continue
-    #
-    #     else:
-    #         pellets_to_include.append(f'{list_of_weights[number_of_pellets]}kg - {list_of_values[number_of_pellets]}')
-    #         number_of_pellets -= 1
-    #         bag_capacity = bag_capacity - list_of_weights[number_of_pellets]
+    while number_of_pellets > 0 and bag_capacity > 0:
+        if k[number_of_pellets][bag_capacity] != k[number_of_pellets - 1][bag_capacity]:
+            print('\nPellets that contributed to the maximum value are: ')
+            print(f"Package {number_of_pellets} with weight {weights[number_of_pellets - 1]} and value= {list_of_values[number_of_pellets - 1]}")
+            bag_capacity = bag_capacity - weights[number_of_pellets - 1]
+            number_of_pellets -= 1
 
     return f'\nThe highest profit that Burglar can make is: ${k[number_of_pellets][bag_capacity]}'
 
