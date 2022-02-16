@@ -9,8 +9,6 @@ def knapsack(list_of_values, list_of_weights, bag_capacity, number_of_pellets):
     the range of weights or the capacity a bag can be able to carry as the columns"""
 
     k = [[0 for _ in range(bag_capacity + 1)] for _ in range(number_of_pellets + 1)]
-    # A List that will store pellets that contributes to the highest value
-    # pellets_to_include = []
 
     """I created nested for loop to iterate through the ranges of the pellets (rows) and the bag capacity (columns) and 
     insert the values of the pellets as the capacity continues to change (to increased) based on the different 
@@ -33,11 +31,12 @@ def knapsack(list_of_values, list_of_weights, bag_capacity, number_of_pellets):
                 k[i][w] = k[i-1][w]
 
     # Finding which pellets that contributed to the highest value and append the value and its weight
+    """Warning: This while loop has takes a lof of time, you may want to comment it to first see the maximum value"""
     while number_of_pellets > 0 and bag_capacity > 0:
         if k[number_of_pellets][bag_capacity] != k[number_of_pellets - 1][bag_capacity]:
             print('\nPellets that contributed to the maximum value are: ')
-            print(f"Package {number_of_pellets} with weight {weights[number_of_pellets - 1]} and value= {list_of_values[number_of_pellets - 1]}")
-            bag_capacity = bag_capacity - weights[number_of_pellets - 1]
+            print(f"Package {number_of_pellets} with weight {list_of_weights[number_of_pellets - 1]} and value= {list_of_values[number_of_pellets - 1]}")
+            bag_capacity = bag_capacity - list_of_weights[number_of_pellets - 1]
             number_of_pellets -= 1
 
     return f'\nThe highest profit that Burglar can make is: ${k[number_of_pellets][bag_capacity]}'
